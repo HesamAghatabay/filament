@@ -16,8 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug')->nullable()->unique();
             $table->longText('description')->nullable();
-            $table->unsignedBigInteger('parent_id')->nullable();
-            $table->foreignId('parent_id')->references('id')->on('categories')
+            $table->foreignId('parent_id')->nullable()->constrained('categories')
                 ->cascadeOnDelete()->cascadeOnUpdate();
             $table->unsignedSmallInteger('position')->default(0);
             $table->boolean('is_visible')->default(false);
