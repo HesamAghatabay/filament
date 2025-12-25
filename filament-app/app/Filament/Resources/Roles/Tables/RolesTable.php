@@ -6,7 +6,10 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\Filter;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
+
 
 class RolesTable
 {
@@ -23,7 +26,8 @@ class RolesTable
                     ->sortable()
             ])
             ->filters([
-                //
+                Filter::make('verified')
+                    ->query(fn(Builder $query): Builder => $query->whereNotNull('name')),
             ])
             ->recordActions([
                 EditAction::make(),
