@@ -18,7 +18,7 @@ class ProductForm
                     ->required(),
                 TextInput::make('slug')
                     ->default(null),
-                Toggle::make('is_visible')->default(false),
+                Toggle::make('is_visible')->default(false)->dehydrated(true),
                 Textarea::make('description')
                     ->required()
                     ->columnSpanFull(),

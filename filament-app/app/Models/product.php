@@ -13,7 +13,8 @@ class product extends Model
         'name',
         'slug',
         'description',
-        'category_id'
+        'category_id',
+        'is_visible'
     ];
     protected $casts = [
         'is_visible' => 'boolean',
