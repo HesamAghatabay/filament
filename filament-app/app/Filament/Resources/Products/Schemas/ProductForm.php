@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Products\Schemas;
 
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Toggle;
@@ -17,13 +18,14 @@ class ProductForm
                     ->required(),
                 TextInput::make('slug')
                     ->default(null),
+                Toggle::make('is_visible'),
                 Textarea::make('description')
                     ->required()
                     ->columnSpanFull(),
-                TextInput::make('category_id')
-                    ->numeric()
-                    ->default(null),
-                Toggle::make('is_visible'),
+                Select::make('category_id')
+                    ->relationship(name: 'categories', titleAttribute: 'name')
+                    ->searchable()
+                    ->loadingMessage('Loading authors...')
             ]);
     }
 }
