@@ -18,14 +18,17 @@ class ProductForm
                     ->required(),
                 TextInput::make('slug')
                     ->default(null),
-                Toggle::make('is_visible'),
+                Toggle::make('is_visible')->default(false),
                 Textarea::make('description')
                     ->required()
                     ->columnSpanFull(),
-                Select::make('category_id')
-                    ->relationship(name: 'categories', titleAttribute: 'name')
+                Select::make('categories')
+                    ->relationship('categories', 'name')
+                    ->multiple()
                     ->searchable()
-                    ->loadingMessage('Loading authors...')
+                    ->preload()
+                    ->required()
+
             ]);
     }
 }

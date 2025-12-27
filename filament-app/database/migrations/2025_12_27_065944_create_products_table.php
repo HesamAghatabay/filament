@@ -18,7 +18,7 @@ return new class extends Migration
             $table->longText('description');
             $table->foreignId('category_id')->nullable()->constrained('categories')
                 ->cascadeOnDelete()->cascadeOnUpdate();
-            $table->boolean('is_visible')->nullable();
+            $table->boolean('is_visible')->default(false);
             $table->timestamps();
             $table->softDeletes();
         });

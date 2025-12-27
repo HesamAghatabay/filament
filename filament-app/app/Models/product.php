@@ -15,9 +15,13 @@ class product extends Model
         'description',
         'category_id'
     ];
+    protected $casts = [
+        'is_visible' => 'boolean',
+    ];
+
 
     public function categories()
     {
-        return $this->belongsToMany(Category::class, );
+        return $this->belongsToMany(Category::class, 'category_product');
     }
 }

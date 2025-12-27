@@ -22,9 +22,12 @@ class ProductsTable
                     ->searchable(),
                 TextColumn::make('slug')
                     ->searchable(),
-                TextColumn::make('category_id')
-                    ->numeric()
-                    ->sortable(),
+                TextColumn::make('categories.name')
+                    ->label('Categories')
+                    ->badge()
+                    ->separator(', ')
+                    ->sortable()
+                    ->searchable(),
                 IconColumn::make('is_visible')
                     ->boolean(),
                 TextColumn::make('created_at')
