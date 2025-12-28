@@ -14,7 +14,9 @@ class product extends Model
         'slug',
         'description',
         'category_id',
-        'is_visible'
+        'is_visible',
+        'image',
+        'alt'
     ];
     protected $casts = [
         'is_visible' => 'boolean',

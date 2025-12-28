@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Products\Schemas;
 
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
@@ -18,6 +19,8 @@ class ProductForm
                     ->required(),
                 TextInput::make('slug')
                     ->default(null),
+                TextInput::make('alt'),
+                FileUpload::make('image')->disk('public')->directory('images'),
                 Toggle::make('is_visible')->default(false)->dehydrated(true),
                 Textarea::make('description')
                     ->required()
