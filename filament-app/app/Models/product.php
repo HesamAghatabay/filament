@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Storage;
 
 class product extends Model
 {
@@ -20,6 +21,7 @@ class product extends Model
     ];
     protected $casts = [
         'is_visible' => 'boolean',
+         'image' => 'string',
     ];
 
 
@@ -27,4 +29,15 @@ class product extends Model
     {
         return $this->belongsToMany(Category::class, 'category_product');
     }
+
+    protected static function booted(): void
+    {
+        // این بخش وقتی اجرا می‌شود که رکورد "کاملاً" (Force Delete) پاک شود
+        static::forceDeleted(function (Product $product) {
+            if (! is_null($product->image) && Storage::disk('public')->exists($product->image)) {
+                Storage::disk('public')->delete($product->image);
+            }
+        });
+    }
+
 }

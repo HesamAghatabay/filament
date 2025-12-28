@@ -20,7 +20,28 @@ class ProductForm
                 TextInput::make('slug')
                     ->default(null),
                 TextInput::make('alt'),
-                FileUpload::make('image')->disk('public')->directory('images'),
+
+                FileUpload::make('image')
+                    ->disk('public')
+                    ->directory('productImage')
+                    ->image() // اطمینان از اینکه فایل آپلود شده حتما عکس است
+                    ->imageEditor() // ابزار برش و ویرایش دستی
+                    // 1. محدود کردن حجم فایل ورودی (مثلا حداکثر 2 مگابایت)
+                    ->maxSize(2048)
+
+                    // 2. تغییر سایز خودکار (Resizing)
+                    // اگر عرض تصویر بیشتر از 1024 باشد، آن را به 1024 کاهش می‌دهد
+                    ->imageResizeTargetWidth('1024')
+                    // اگر ارتفاع بیشتر از 1024 باشد، آن را کاهش می‌دهد
+                    ->imageResizeTargetHeight('1024')
+
+                    // 3. نحوه تغییر سایز (معمولاً cover یا contain)
+                    ->imageResizeMode('contain'),
+
+                // 4. بهینه‌سازی فرمت (اختیاری - تبدیل خودکار به WebP برای کاهش شدید حجم)
+                // ->imagePreviewHeight('250') // فقط برای نمایش زیباتر در فرم,
+
+
                 Toggle::make('is_visible')->default(false)->dehydrated(true),
                 Textarea::make('description')
                     ->required()
