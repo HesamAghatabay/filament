@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "de873bb513f75f3536def6011a0626bc",
+    "content-hash": "d45e06662572bce6d9b37e73a856cacb",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -71,6 +71,150 @@
                 "source": "https://github.com/AnourValar/eloquent-serialize/tree/1.3.5"
             },
             "time": "2025-12-04T13:38:21+00:00"
+        },
+        {
+            "name": "ariaieboy/filament-jalali",
+            "version": "2.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ariaieboy/filament-jalali.git",
+                "reference": "3f75bb7763e9c62d4d62c5bc3bc78145fd0d1c29"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ariaieboy/filament-jalali/zipball/3f75bb7763e9c62d4d62c5bc3bc78145fd0d1c29",
+                "reference": "3f75bb7763e9c62d4d62c5bc3bc78145fd0d1c29",
+                "shasum": ""
+            },
+            "require": {
+                "ariaieboy/jalali": "^1.0.1",
+                "filament/filament": "^4",
+                "php": "~8.2.0|~8.3|~8.4|~8.5",
+                "spatie/laravel-package-tools": "^1.13.5"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.11",
+                "larastan/larastan": "^3",
+                "nunomaduro/collision": "^8",
+                "orchestra/testbench": "^10",
+                "pestphp/pest": "^3",
+                "pestphp/pest-plugin-laravel": "^3",
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan-deprecation-rules": "^2",
+                "phpstan/phpstan-phpunit": "^2"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Ariaieboy\\FilamentJalali\\FilamentJalaliServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Ariaieboy\\FilamentJalali\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "ariaieboy",
+                    "email": "ariaieboy.ir@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Add Jalali/Shamsi support for FilamentPHP",
+            "homepage": "https://github.com/ariaieboy/filament-jalali",
+            "keywords": [
+                "ariaieboy",
+                "filament-jalali-datetimepicker",
+                "filament-jalali-support",
+                "filament-shamsi-calendar",
+                "filament-shamsi-support",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/ariaieboy/filament-jalali/issues",
+                "source": "https://github.com/ariaieboy/filament-jalali/tree/2.1.3"
+            },
+            "time": "2025-12-03T09:15:41+00:00"
+        },
+        {
+            "name": "ariaieboy/jalali",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ariaieboy/jalali.git",
+                "reference": "d1623c8587c5ab1a20b0b47a975e0e677b63e12a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ariaieboy/jalali/zipball/d1623c8587c5ab1a20b0b47a975e0e677b63e12a",
+                "reference": "d1623c8587c5ab1a20b0b47a975e0e677b63e12a",
+                "shasum": ""
+            },
+            "require": {
+                "nesbot/carbon": "^2||^3",
+                "php": "~8.3|~8.4"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.0",
+                "pestphp/pest": "^4",
+                "phpstan/phpstan": "^2",
+                "phpstan/phpstan-deprecation-rules": "^2",
+                "phpstan/phpstan-strict-rules": "^2"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Ariaieboy\\Jalali\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Milad Rey",
+                    "email": "miladr@gmail.com"
+                },
+                {
+                    "name": "Morteza Parvini",
+                    "email": "m.parvini@outlook.com"
+                },
+                {
+                    "name": "AriaieBOY",
+                    "email": "ariaieboy.ir@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "This Package helps developers to easily work with Jalali (Shamsi or Iranian) dates in php appliations, based on Jalali (Shamsi) DateTime class.",
+            "homepage": "https://github.com/ariaieboy/jalali",
+            "keywords": [
+                "Jalali",
+                "ariaieboy",
+                "persian-calendar",
+                "shamsi"
+            ],
+            "support": {
+                "issues": "https://github.com/ariaieboy/jalali/issues",
+                "source": "https://github.com/ariaieboy/jalali/tree/1.2.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/ariaieboy",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-11-26T15:20:43+00:00"
         },
         {
             "name": "blade-ui-kit/blade-heroicons",
