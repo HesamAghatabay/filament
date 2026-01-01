@@ -27,7 +27,6 @@ class ProductsTable
                     ->label('Categories')
                     ->badge()
                     ->separator(', ')
-                    ->sortable()
                     ->searchable(),
                 ImageColumn::make('image')
                     ->disk('public')

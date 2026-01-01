@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources\Products\Schemas;
 
+use Filament\Forms\Components\CodeEditor;
+use Filament\Forms\Components\ColorPicker;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\FileUpload;
@@ -64,8 +66,10 @@ class ProductForm
                 RichEditor::make('description')->columnSpanFull()
                     ->json(),
                 TagsInput::make('tags')
-                    ->separator(',')
+                    ->separator(','),
 
+                ColorPicker::make('color'),
+        
             ]);
     }
 }
