@@ -10,6 +10,13 @@ class product extends Model
 {
     use SoftDeletes;
 
+    protected function casts(): array
+    {
+        return [
+            'description' => 'array',
+        ];
+    }
+
     protected $fillable = [
         'name',
         'slug',

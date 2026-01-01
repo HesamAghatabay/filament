@@ -6,7 +6,9 @@ use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\MarkdownEditor;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TimePicker;
@@ -57,7 +59,12 @@ class ProductForm
                     ->searchable()
                     ->preload()
                     ->required(),
-                MarkdownEditor::make('description'),
+
+
+                RichEditor::make('description')->columnSpanFull()
+                    ->json(),
+                TagsInput::make('tags')
+                    ->separator(',')
 
             ]);
     }
