@@ -2,12 +2,18 @@
 
 namespace App\Filament\Resources\Products\Schemas;
 
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TimePicker;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
+
 
 class ProductForm
 {
@@ -20,6 +26,7 @@ class ProductForm
                 TextInput::make('slug')
                     ->default(null),
                 TextInput::make('alt'),
+
 
                 FileUpload::make('image')
                     ->disk('public')
@@ -42,16 +49,15 @@ class ProductForm
                 // ->imagePreviewHeight('250') // فقط برای نمایش زیباتر در فرم,
 
 
+
                 Toggle::make('is_visible')->default(false)->dehydrated(true),
-                Textarea::make('description')
-                    ->required()
-                    ->columnSpanFull(),
                 Select::make('categories')
                     ->relationship('categories', 'name')
                     ->multiple()
                     ->searchable()
                     ->preload()
-                    ->required()
+                    ->required(),
+                MarkdownEditor::make('description'),
 
             ]);
     }
