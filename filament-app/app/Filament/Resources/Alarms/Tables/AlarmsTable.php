@@ -17,10 +17,10 @@ class AlarmsTable
                 TextColumn::make('name')
                     ->searchable(),
                 TextColumn::make('alarm')
-                    ->dateTime()
+                    ->dateTime()->jalaliDate()
                     ->sortable(),
                 TextColumn::make('remindes')
-                    ->dateTime()
+                    ->dateTime()->jalaliDateTime()
                     ->sortable(),
                 TextColumn::make('created_at')
                     ->dateTime()

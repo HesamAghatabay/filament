@@ -15,9 +15,15 @@ class AlarmForm
             ->components([
                 TextInput::make('name')
                     ->required(),
+
                 DateTimePicker::make('alarm')->timezone('Asia/Tehran')
-                    ->required(),
-                DateTimePicker::make('remindes')->timezone('Asia/Tehran'),
+                    ->jalali(weekdaysShort: true)->hasToday()
+                    ->required()->jalali(),
+
+                DateTimePicker::make('remindes')->jalali()
+                    ->jalali(weekdaysShort: true)->hasToday()
+                    ->timezone('Asia/Tehran'),
+
                 Textarea::make('description')
                     ->default(null)
                     ->columnSpanFull(),

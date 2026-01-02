@@ -8,4 +8,9 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateAlarm extends CreateRecord
 {
     protected static string $resource = AlarmResource::class;
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
+    }
 }
