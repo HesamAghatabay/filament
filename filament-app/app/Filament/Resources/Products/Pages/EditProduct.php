@@ -24,4 +24,8 @@ class EditProduct extends EditRecord
     {
         return $this->getResource()::getUrl('index');
     }
+    protected function getSavedNotificationTitle(): ?string
+    {
+        return "محصول ویرایش شد";
+    }
 }

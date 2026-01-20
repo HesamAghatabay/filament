@@ -2,74 +2,124 @@
 
 namespace App\Filament\Resources\Products\Schemas;
 
-use Filament\Forms\Components\CodeEditor;
 use Filament\Forms\Components\ColorPicker;
-use Filament\Forms\Components\DatePicker;
-use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Textarea;
-use Filament\Forms\Components\TimePicker;
 use Filament\Forms\Components\Toggle;
+use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
-
 
 class ProductForm
 {
     public static function configure(Schema $schema): Schema
     {
-        return $schema
-            ->components([
-                TextInput::make('name')
-                    ->required(),
-                TextInput::make('slug')
-                    ->default(null),
-                TextInput::make('alt'),
+        return $schema->components([
 
+            Grid::make()
+                ->columns([
+                    'sm' => 2,
+                    'lg' => 3,
+                ])
+                ->schema([
 
-                FileUpload::make('image')
-                    ->disk('public')
-                    ->directory('productImage')
-                    ->image() // اطمینان از اینکه فایل آپلود شده حتما عکس است
-                    ->imageEditor() // ابزار برش و ویرایش دستی
-                    // 1. محدود کردن حجم فایل ورودی (مثلا حداکثر 2 مگابایت)
-                    ->maxSize(2048)
+                    TextInput::make('name')
+                        ->label('نام محصول')
+                        ->required()
+                        ->columnOrder([
+                            'default' => 1,
+                            'lg' => 1,
+                        ]),
 
-                    // 2. تغییر سایز خودکار (Resizing)
-                    // اگر عرض تصویر بیشتر از 1024 باشد، آن را به 1024 کاهش می‌دهد
-                    ->imageResizeTargetWidth('1024')
-                    // اگر ارتفاع بیشتر از 1024 باشد، آن را کاهش می‌دهد
-                    ->imageResizeTargetHeight('1024')
+                    TextInput::make('slug')
+                        ->label('اسلاگ')
+                        ->default(null)
+                        ->columnOrder([
+                            'default' => 2,
+                            'lg' => 2,
+                        ]),
 
-                    // 3. نحوه تغییر سایز (معمولاً cover یا contain)
-                    ->imageResizeMode('contain'),
+                    TextInput::make('alt')
+                        ->label('متن جایگزین تصویر')
+                        ->columnOrder([
+                            'default' => 3,
+                            'lg' => 3,
+                        ]),
 
-                // 4. بهینه‌سازی فرمت (اختیاری - تبدیل خودکار به WebP برای کاهش شدید حجم)
-                // ->imagePreviewHeight('250') // فقط برای نمایش زیباتر در فرم,
+                    FileUpload::make('image')
+                        ->label('تصویر محصول')
+                        ->disk('public')
+                        ->directory('productImage')
+                        ->image()
+                        ->imageEditor()
+                        ->maxSize(2048)
+                        ->imageResizeTargetWidth(1024)
+                        ->imageResizeTargetHeight(1024)
+                        ->imageResizeMode('contain')
+                        ->columnSpan([
+                            'sm' => 2,
+                            'lg' => 1,
+                        ])
+                        ->columnOrder([
+                            'default' => 4,
+                            'lg' => 4,
+                        ]),
 
+                    Toggle::make('is_visible')
+                        ->label('نمایش داده شود؟')
+                        ->default(false)
+                        ->dehydrated(true)
+                        ->columnOrder([
+                            'default' => 5,
+                            'lg' => 5,
+                        ]),
 
+                    Select::make('categories')
+                        ->label('دسته‌بندی‌ها')
+                        ->relationship('categories', 'name')
+                        ->multiple()
+                        ->searchable()
+                        ->preload()
+                        ->required()
+                        ->columnSpan([
+                            'sm' => 2,
+                            'lg' => 2,
+                        ])
+                        ->columnOrder([
+                            'default' => 6,
+                            'lg' => 6,
+                        ]),
 
-                Toggle::make('is_visible')->default(false)->dehydrated(true),
-                Select::make('categories')
-                    ->relationship('categories', 'name')
-                    ->multiple()
-                    ->searchable()
-                    ->preload()
-                    ->required(),
+                    RichEditor::make('description')
+                        ->label('توضیحات محصول')
+                        ->json()
+                        ->columnSpanFull()
+                        ->columnOrder([
+                            'default' => 7,
+                            'lg' => 7,
+                        ]),
 
+                    TagsInput::make('tags')
+                        ->label('تگ‌ها')
+                        ->separator(',')
+                        ->columnSpan([
+                            'sm' => 1,
+                            'lg' => 2,
+                        ])
+                        ->columnOrder([
+                            'default' => 8,
+                            'lg' => 8,
+                        ]),
 
-                RichEditor::make('description')->columnSpanFull()
-                    ->json(),
-                TagsInput::make('tags')
-                    ->separator(','),
-
-                ColorPicker::make('color'),
-        
-            ]);
+                    ColorPicker::make('color')
+                        ->label('رنگ محصول')
+                        ->columnOrder([
+                            'default' => 9,
+                            'lg' => 9,
+                        ]),
+                ]),
+        ]);
     }
 }

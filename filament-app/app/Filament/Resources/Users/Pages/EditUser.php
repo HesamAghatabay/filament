@@ -16,4 +16,12 @@ class EditUser extends EditRecord
             DeleteAction::make(),
         ];
     }
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
+    }
+    protected function getSavedNotificationTitle(): ?string
+    {
+        return "کاربر ویرایش شد";
+    }
 }

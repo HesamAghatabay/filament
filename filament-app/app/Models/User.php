@@ -18,7 +18,7 @@ class User extends Authenticatable implements FilamentUser
     public function canAccessPanel(Panel $panel): bool
     {
         // throw new \Exception('Not implemented');
-        return $this->hasRole('Admin');
+        return $this->hasRole(['Admin','bigBoss']);
     }
 
     /**
