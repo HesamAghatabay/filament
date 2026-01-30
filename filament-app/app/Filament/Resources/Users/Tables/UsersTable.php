@@ -20,6 +20,7 @@ class UsersTable
                 TextColumn::make('email')
                     ->label('Email address')
                     ->searchable(),
+                TextColumn::make('roles.name'),
                 TextColumn::make('email_verified_at')
                     ->dateTime(),
                 TextColumn::make('created_at')
@@ -34,7 +35,7 @@ class UsersTable
             ])
             ->recordActions([
                 EditAction::make(),
-                DeleteAction::make(),
+                // DeleteAction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

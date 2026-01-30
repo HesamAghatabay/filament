@@ -21,9 +21,9 @@ Route::get('/', function () {
 //     }
 // });
 
-Route::get('spatie', function () {
-    $user = User::find(1);
-    $role = Role::create(['name' => 'Admin']);
-    $user->assignRole($role);
-    dd('success');
-});
+// Route::get('spatie', function () {
+//     $user = User::find(1);
+//     $role = Role::create(['name' => 'Admin']);
+//     $user->assignRole($role);
+//     dd('success');
+// });
