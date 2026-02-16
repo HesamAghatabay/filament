@@ -17,7 +17,7 @@ class UsersTable
             ->columns([
                 TextColumn::make('name')
                     ->searchable(),
-                TextColumn::make('email')
+                TextColumn::make('email')->visible(fn () => auth()->user()->hasRole('admin'))
                     ->label('Email address')
                     ->searchable(),
                 TextColumn::make('roles.name'),
@@ -43,4 +43,5 @@ class UsersTable
                 ]),
             ]);
     }
+
 }

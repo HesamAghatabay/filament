@@ -28,7 +28,7 @@ class ProductsTable
                     ->searchable()->words(10),
                 TextColumn::make('categories.name')
                     ->label('Categories')
-                    ->badge()
+                    ->badge()->placeholder('Untitled')
                     ->separator(',')
                     ->searchable(),
                 ImageColumn::make('image')
@@ -48,8 +48,6 @@ class ProductsTable
             ])
             ->filters([
                 TrashedFilter::make(),
-                Filter::make('is_featured')
-                    ->default()
             ])
             ->recordActions([
                 EditAction::make(),

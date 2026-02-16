@@ -7,7 +7,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 
-use function Laravel\Prompts\select;
+// use function Laravel\Prompts\select;
 
 class UserForm
 {
@@ -20,10 +20,12 @@ class UserForm
                 TextInput::make('email')
                     ->label('Email address')
                     ->email()
+                    
                     ->required(),
                 DateTimePicker::make('email_verified_at'),
                 TextInput::make('password')
                     ->password()
+                    ->visibleOn('create')
                     ->required(),
                 Select::make('role')->multiple()
                     ->relationship('roles', 'name')

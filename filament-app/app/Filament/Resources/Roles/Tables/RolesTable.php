@@ -20,7 +20,7 @@ class RolesTable
                 TextColumn::make('name'),
                 TextColumn::make('created_at')
                     ->label('Created')
-                    ->sortable(),
+                    ->visible(),
                 TextColumn::make('updated_at')
                     ->label('Updated')
                     ->sortable()
